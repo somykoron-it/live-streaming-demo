@@ -106,7 +106,6 @@ talkButton.onclick = async () => {
           result_format: 'mp4',
           stitch: true,
         },
-        config: {fluent: 'false', pad_audio: '0.0'},
         session_id: sessionId,
       }),
     });
