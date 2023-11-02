@@ -42,7 +42,7 @@ connectButton.onclick = async () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      source_url: 'https://d-id-public-bucket.s3.amazonaws.com/or-roman.jpg',
+      source_url: 'https://i.ibb.co/3p1dJd3/rdj.png',
     }),
   });
 
@@ -84,13 +84,29 @@ talkButton.onclick = async () => {
       },
       body: JSON.stringify({
         script: {
-          type: 'audio',
-          audio_url: 'https://d-id-public-bucket.s3.us-west-2.amazonaws.com/webrtc.mp3',
+          type: 'text',
+          subtitles: 'false',
+          provider: {type: 'microsoft', voice_id: 'en-US-JennyNeural'},
+          ssml: 'false',
+          input : 'Hello, I am robert downer JR?'
         },
         driver_url: 'bank://lively/',
         config: {
+          fluent: true,
+          pad_audio: 0,
+          driver_expressions: {
+            expressions: [{ expression: 'neutral', start_frame: 0, intensity: 0 }],
+          },
+          align_driver: true,
+          align_expand_factor: 0,
+          auto_match: true,
+          motion_factor: 0,
+          normalization_factor: 0,
+          sharpen: true,
+          result_format: 'mp4',
           stitch: true,
         },
+        config: {fluent: 'false', pad_audio: '0.0'},
         session_id: sessionId,
       }),
     });
