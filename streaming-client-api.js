@@ -88,7 +88,7 @@ talkButton.onclick = async () => {
           subtitles: 'false',
           provider: {type: 'microsoft', voice_id: 'en-US-JennyNeural'},
           ssml: 'false',
-          input : 'Hello, I am robert downer JR?'
+          input : 'Hello, I am robert downer JR? Welcom to thevirtual persona App.'
         },
         driver_url: 'bank://lively/',
         config: {
