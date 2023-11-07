@@ -1,7 +1,7 @@
 'use strict';
 import DID_API from './api.json' assert { type: 'json' };
 
-if (DID_API.key == '🤫') alert('Please put your api key inside ./api.json and restart..');
+if (DID_API.key == 'ðŸ¤«') alert('Please put your api key inside ./api.json and restart..');
 
 const RTCPeerConnection = (
   window.RTCPeerConnection ||
@@ -42,7 +42,7 @@ connectButton.onclick = async () => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      source_url: 'https://i.ibb.co/3p1dJd3/rdj.png',
+      source_url: 'https://d-id-public-bucket.s3.amazonaws.com/or-roman.jpg',
     }),
   });
 
@@ -85,27 +85,29 @@ talkButton.onclick = async () => {
       body: JSON.stringify({
         script: {
           type: 'text',
-          subtitles: 'false',
-          provider: {type: 'microsoft', voice_id: 'en-US-JennyNeural'},
-          ssml: 'false',
-          input : 'Hello, I am robert downer JR? Welcom to thevirtual persona App.'
+          subtitles: false,
+          provider: {
+            type: 'microsoft',
+            voice_id: 'en-US-JennyNeural',
+          },
+          input: 'Hello, I am Robert Downey Jr.',
         },
-        driver_url: 'bank://lively/',
         config: {
           fluent: true,
-          pad_audio: 0,
           driver_expressions: {
-            expressions: [{ expression: 'neutral', start_frame: 0, intensity: 0 }],
+            expressions: [
+              {
+                expression: 'neutral',
+                start_frame: 0,
+                intensity: 0,
+              },
+            ],
+            transition_frames: 0,
           },
-          align_driver: true,
-          align_expand_factor: 0,
-          auto_match: true,
-          motion_factor: 0,
-          normalization_factor: 0,
-          sharpen: true,
-          result_format: 'mp4',
           stitch: true,
+          result_format: 'mp4',
         },
+        driver_url: 'bank://lively/',
         session_id: sessionId,
       }),
     });
@@ -189,7 +191,7 @@ function onTrack(event) {
    * that's being streamed - It does so by periodically looking for changes in total stream data size
    *
    * This information in our case is used in order to show idle video while no talk is streaming.
-   * To create this idle video use the POST https://api.d-id.com/talks endpoint with a silent audio file or a text script with only ssml breaks 
+   * To create this idle video use the POST https://api.d-id.com/talks endpoint with a silent audio file or a text script with only ssml breaks
    * https://docs.aws.amazon.com/polly/latest/dg/supportedtags.html#break-tag
    * for seamless results use `config.fluent: true` and provide the same configuration as the streaming video
    */
